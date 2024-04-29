@@ -29,6 +29,7 @@
   <!-- 
     - preload images
   -->
+  <script type = "text/javascript" src="main.js"></script>
 </head>
 
 <body id="top">
@@ -43,7 +44,10 @@
       <div class="container">
 
         <div class="countdown-text">
-          Next match: <span class="span skewBg">6</span> Days
+          <script type="text/javascript">
+            countdownTimer();
+          </script>
+          Next match: <span class="span skewBg"><p id="demo"></p></span> Days
         </div>
 
         <div class="social-wrapper">
