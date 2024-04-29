@@ -188,7 +188,7 @@
             <p class="hero-subtitle">#1 Battlefield 4 clan</p>
 
             <h1 class="h1 hero-title">
-              Digital <span class="span">Brotherhood</span> Matches
+              Digital <span class="span">Brotherhood</span>
             </h1>
 
             <p class="hero-text">
@@ -268,21 +268,29 @@
               Watch Live <span class="span">Match</span>
             </h2>
 
-            <figure class="live-match-banner img-holder" style="--width: 800; --height: 470;">
+            <body>
+            <!-- Add a placeholder for the Twitch embed -->
+            <div id="twitch-embed"></div>
 
-              <img src="./assets/images/live-match-banner.jpg" width="800" height="470" loading="lazy"
-                alt="Live Match Video" class="img-cover">
+            <!-- Load the Twitch embed JavaScript file -->
+            <script src="https://embed.twitch.tv/embed/v1.js"></script>
 
-              <button class="play-btn" aria-label="play video">
-                <ion-icon name="play"></ion-icon>
-              </button>
-
-            </figure>
+            <!-- Create a Twitch.Embed object that will render within the "twitch-embed" element -->
+            <script type="text/javascript">
+              new Twitch.Embed("twitch-embed", {
+                width: 1200,
+                height: 480,
+                channel: "digitalbrotherhood",
+                // Only needed if this page is going to be embedded on other websites
+                //parent: ["embed.example.com", "othersite.example.com"]
+              });
+            </script>
+            </body>
 
             <div class="live-match-player">
 
               <figure class="player player-1 img-holder" style="--width: 406; --height: 277;">
-                <img src="./assets/images/live-match-player-1.png" width="406" height="277" loading="lazy"
+                <img src="./assets/images/DBLogo.png" width="406" height="277" loading="lazy"
                   alt="Digital Brotherhood" class="w-100">
               </figure>
 
