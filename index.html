@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -347,72 +348,25 @@
             *********what text should go here**********
           </p>
 
-          <ul class="blog-list">
+          <ul id = memList class="blog-list">
+            <script>
+              $(document).ready(function(){
+                src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+                let memberList = ["Budthespud95", "Ncognit0", "DJGrouch", 'NWG_BegForMercy', 'Rowebot3339', 'xHotcakes', 'Happycamper_DOD', 'JusticeForSom3', 'lnebriate', 'PearlAWood', 'IBA_Rosco',
+                  'WetSheets', 'BarelyHarmless', 'agentfeux', 'm320abuser', 'Copied--DNA', 'HArShA_NeOTrIX', 'samito55', 'SlickShoes76', 'SPACE-CADET871', 'Murdock-MG',
+                  'LusciousLou6', 'moosekiller56', 'BurntPlckle', 'Logan_5_68', 'rednckdonut934'];
+                for(const i in memberList){
+                  let appendVar = "https://widgets.gametools.network/stats/pc/name/" + memberList[i] + "/bf4/en-US/50";
+                  $('#memList').append("<iframe id = newFrame title=\"Stats widget\" src=\"\" height=\"380px\" width=\"600px\" frameborder=\"0\" allowtransparency=\"true\"></iframe>")
+                }
+              });
+            </script>
+
 
             <li>
               <div class="blog-card">
 
-                <iframe title="Stats widget" src="https://widgets.gametools.network/stats/pc/name/Budthespud95/bf4/en-US/50" height="380px" width="600px" frameborder="0" allowtransparency="true"></iframe>
 
-                <div class="card-content">
-
-                  <ul class="card-meta-list">
-
-                  </ul>
-
-                  <h3>
-                    <a href="#" class="card-title">Budthespud95</a>
-                  </h3>
-
-                  <p class="card-text">
-
-                  </p>
-
-                  <a href="https://gametools.network/stats/pc/name/Budthespud95?game=bf4" class="card-link">
-                    <span class="span">Read More</span>
-
-                    <ion-icon name="caret-forward"></ion-icon>
-                  </a>
-
-                </div>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="blog-card">
-
-                <iframe title="Stats widget" src="https://widgets.gametools.network/stats/pc/name/DJGrouch/bf4/en-US/50" height="380px" width="600px" frameborder="0" allowtransparency="true"></iframe>
-
-                <div class="card-content">
-
-                  <ul class="card-meta-list">
-
-                  </ul>
-
-                  <h3>
-                    <a href="#" class="card-title">DJGrouch</a>
-                  </h3>
-
-                  <p class="card-text">
-
-                  </p>
-
-                  <a href="https://gametools.network/stats/pc/name/DJGrouch?game=bf4" class="card-link">
-                    <span class="span">Read More</span>
-
-                    <ion-icon name="caret-forward"></ion-icon>
-                  </a>
-
-                </div>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="blog-card">
-
-                <iframe title="Stats widget" src="https://widgets.gametools.network/stats/pc/name/Ncognit0/bf4/en-US/50" height="380px" width="600px" frameborder="0" allowtransparency="true"></iframe>
 
                 <div class="card-content">
 
