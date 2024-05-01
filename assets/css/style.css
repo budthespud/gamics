@@ -38,11 +38,11 @@
   --marigold: hsl(42, 99%, 46%);
   --platinum: hsl(0, 0%, 89%);
   --dim-gray: hsl(0, 0%, 42%);
-  --white_15: hsla(0, 0%, 100%, 0.15);
-  --white_10: hsla(0, 0%, 100%, 0.1);
+  --white_15: hsl(180, 1%, 65%);
+  --white_10: hsl(0, 5%, 73%);
   --xiketic: hsl(277, 25%, 10%);
   --silver: hsl(0, 0%, 78%);
-  --white: hsl(220, 5%, 25%);
+  --white: hsl(180, 2%, 88%);
   --jet: hsl(236, 13%, 23%);
 
   /**
@@ -561,7 +561,7 @@ body {
 
 .section-wrapper {
   position: relative;
-  background-color: var(--white);
+  background-color: var(--white_10);
   z-index: 1;
 }
 
@@ -584,7 +584,7 @@ body {
 .latest-game .has-scrollbar {
   margin-inline: -15px;
   padding-inline: 15px;
-  scroll-padding-inline-start: 15px;
+  /*scroll-padding-inline-start: 15px;*/
 }
 
 .latest-game-card {
@@ -642,7 +642,7 @@ video {
 
 .live-match-banner {
   position: relative;
-  background-color: var(--light-gray-1);
+  background-color: var(--dim-gray);
   border-radius: 6px;
   overflow: hidden;
   box-shadow: var(--shadow-3);
