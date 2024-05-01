@@ -28,3 +28,37 @@ function countdownTimer(){
         }
     }, 1000);
 }
+
+async function fetchAsync(url) {
+    let response = await fetch(url);
+    let data = await response.json();
+    return data;
+}
+
+async function getTopSkill(memberList){
+    let memberStats = {};
+    for(const i in memberList){
+        let data = await fetchAsync('https://api.gametools.network/bf4/stats/?format_values=true&name=' + memberList[i] + '&platform=pc');
+        memberStats[memberList[i]] = data.skill;
+    }
+    let arr = [];
+    for (var p in memberStats) {
+        arr.push({key: p, value: memberStats[p]});
+    }
+    arr.sort(function(a,b){return b.value - a.value});
+    let topTen = arr.slice(0, 10);
+    for(const i in topTen){
+        console.log(topTen[i].key);
+        let appendVar = "https://widgets.gametools.network/stats/pc/name/" + topTen[i].key + "/bf4/en-US/50";
+        $('#memList').append("<li><iframe id = newFrame title=\"Stats widget\" src=\"\" height=\"380px\" width=\"600px\" frameborder=\"0\" allowtransparency=\"true\"></iframe></li>")
+        document.getElementById("newFrame").id = i
+        document.getElementById(i).src =
+            appendVar;
+    }
+}
+
+//let memberList = ["Budthespud95", "Ncognit0", "DJGrouch", 'NWG_BegForMercy', 'Rowebot3339', 'xHotcakes', 'Happycamper_DOD', 'JusticeForSom3', 'lnebriate', 'PearlAWood', 'IBA_Rosco',
+//    'WetSheets', 'BarelyHarmless', 'agentfeux', 'm320abuser', 'Copied--DNA', 'HArShA_NeOTrIX', 'samito55', 'SlickShoes76', 'SPACE-CADET871', 'Murdock-MG',
+//    'LusciousLou6', 'moosekiller56', 'BurntPlckle', 'Logan_5_68', 'rednckdonut934'];
+//let memberStats = getTopSkill(memberList);
+////console.log(memberStats);
