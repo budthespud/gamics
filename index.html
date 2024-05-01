@@ -266,10 +266,13 @@
           <div class="container">
 
             <h2 class="h2 section-title">
-              Watch on <span class="span">Youtube</span>
+              Latest <span class="span">Videos</span>
             </h2>
 
-            <iframe width="1200" height="480" src="https://www.youtube.com/embed/P1Vj48KLN6c?si=ptrQ0KNyXpjwqgGu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <video width="1280" height="720" controls>
+              <source src="./assets/videos/knivparty.mp4" type="video/mp4">
+            </video>
+
 
             <div class="live-match-player">
 
@@ -357,8 +360,9 @@
                   'LusciousLou6', 'moosekiller56', 'BurntPlckle', 'Logan_5_68', 'rednckdonut934'];
                 for(const i in memberList){
                   let appendVar = "https://widgets.gametools.network/stats/pc/name/" + memberList[i] + "/bf4/en-US/50";
-                  $('#memList').append("<iframe id = newFrame title=\"Stats widget\" src=\"\" height=\"380px\" width=\"600px\" frameborder=\"0\" allowtransparency=\"true\"></iframe>")
-                  document.getElementById("newFrame").src =
+                  $('#memList').append("<li><iframe id = newFrame title=\"Stats widget\" src=\"\" height=\"380px\" width=\"600px\" frameborder=\"0\" allowtransparency=\"true\"></iframe></li>")
+                  document.getElementById("newFrame").id = i
+                  document.getElementById(i).src =
                           appendVar;
                 }
               });
