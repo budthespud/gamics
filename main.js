@@ -57,8 +57,6 @@ async function getTopSkill(memberList){
     }
 }
 
-//let memberList = ["Budthespud95", "Ncognit0", "DJGrouch", 'NWG_BegForMercy', 'Rowebot3339', 'xHotcakes', 'Happycamper_DOD', 'JusticeForSom3', 'lnebriate', 'PearlAWood', 'IBA_Rosco',
-//    'WetSheets', 'BarelyHarmless', 'agentfeux', 'm320abuser', 'Copied--DNA', 'HArShA_NeOTrIX', 'samito55', 'SlickShoes76', 'SPACE-CADET871', 'Murdock-MG',
-//    'LusciousLou6', 'moosekiller56', 'BurntPlckle', 'Logan_5_68', 'rednckdonut934'];
+
 //let memberStats = getTopSkill(memberList);
 ////console.log(memberStats);
