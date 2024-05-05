@@ -294,23 +294,53 @@
       <section class="section shop" id="shop" aria-label="shop"
         style="background-image: url('./assets/images/shop-bg.jpg')">
         <div class="container">
+          <script>
+            $(document).ready(async function(){
+              //let memberDataToday = {};
+              let memberDataStart = {};
+              const getRecentKills = function (){
 
+                $.ajax({
+                  async:false,
+                  url:'today.txt',
+                  success: function (data1){
+                    const memberDataToday = JSON.parse(data1);
+                    getStartKills(memberDataToday);
+                  }
+                });
+              }
+              const getStartKills = function (memberDataToday){
+                $.ajax({
+                  async:false,
+                  url:'output.txt',
+                  success: function (data2){
+                    memberDataStart = JSON.parse(data2);
+                    for(const i in memberDataStart){
+                      console.log('today ' + memberDataToday[i].kills);
+                      console.log('start ' + memberDataStart[i].kills);
+                      let weeklyKills = (memberDataToday[i].kills - memberDataStart[i].kills);
+                      let appendVar = 'name: ' + i + ' kills: ' + weeklyKills;
+                      console.log(appendVar);
+                      $('#topWeek').append("<li id=\"newLine\" class=\"section-text\"></li>")
+                      $("#one").text("one");
+                      document.getElementById("newLine").id = i
+                      document.getElementById(i).innerHTML =
+                              appendVar;
+                    }
+                  },
+                });
+              }
+              getRecentKills();
+            });
+          </script>
           <h2 class="h2 section-title">
-            Merch <span class="span">Corner</span>
+            Weekly <span class="span">Stats!</span>
           </h2>
-
           <p class="section-text">
-            Your source for Digital Brotherhood Merch!
+            This week's kill leaderboard!
           </p>
-
-          <ul class="has-scrollbar">
-
-            <p class="section-text">
-              Coming soon....
-            </p>
-
+          <ul id="topWeek" class="has-scrollbar">
           </ul>
-
         </div>
       </section>
 
@@ -335,12 +365,19 @@
 
           <ul id = memList class="blog-list">
             <script>
-              $(document).ready(function(){
-                src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"
-                let memberList = ["Budthespud95", "Ncognit0", "DJGrouch", 'NWG_BegForMercy', 'Rowebot3339', 'xHotcakes', 'Happycamper_DOD', 'JusticeForSom3', 'lnebriate', 'PearlAWood', 'IBA_Rosco',
-                  'WetSheets', 'BarelyHarmless', 'agentfeux', 'm320abuser', 'Copied--DNA', 'HArShA_NeOTrIX', 'samito55', 'SlickShoes76', 'SPACE-CADET871', 'Murdock-MG',
-                  'LusciousLou6', 'moosekiller56', 'BurntPlckle', 'Logan_5_68', 'rednckdonut934'];
-                getTopSkill(memberList);
+              $(document).ready(async function(){
+                let memberData = {};
+                const getMemberData = function (){
+
+                  $.ajax({
+                    url:'today.txt',
+                    success: function (data){
+                      memberData = JSON.parse(data);
+                      getTopSkill(memberData);
+                    }
+                  });
+                }
+                getMemberData();
               });
             </script>
           </ul>

@@ -35,20 +35,15 @@ async function fetchAsync(url) {
     return data;
 }
 
-async function getTopSkill(memberList){
-    let memberStats = {};
-    for(const i in memberList){
-        let data = await fetchAsync('https://api.gametools.network/bf4/stats/?format_values=true&name=' + memberList[i] + '&platform=pc');
-        memberStats[memberList[i]] = data.skill;
-    }
+async function getTopSkill(memberData){
     let arr = [];
-    for (var p in memberStats) {
-        arr.push({key: p, value: memberStats[p]});
+    for (const p in memberData) {
+        arr.push({key: p, value: memberData[p].skill});
     }
     arr.sort(function(a,b){return b.value - a.value});
     let topTen = arr.slice(0, 10);
     for(const i in topTen){
-        console.log(topTen[i].key);
+        //console.log(topTen[i].key);
         let appendVar = "https://widgets.gametools.network/stats/pc/name/" + topTen[i].key + "/bf4/en-US/50";
         $('#memList').append("<li><iframe id = newFrame title=\"Stats widget\" src=\"\" height=\"380px\" width=\"600px\" frameborder=\"0\" allowtransparency=\"true\"></iframe></li>")
         document.getElementById("newFrame").id = i
