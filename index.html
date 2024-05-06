@@ -303,6 +303,7 @@
                 $.ajax({
                   async:false,
                   url:'today.txt',
+                  cache: false,
                   success: function (data1){
                     const memberDataToday = JSON.parse(data1);
                     getStartKills(memberDataToday);
@@ -313,16 +314,22 @@
                 $.ajax({
                   async:false,
                   url:'output.txt',
+                  cache: false,
                   success: function (data2){
                     memberDataStart = JSON.parse(data2);
+                    let sortable = [];
                     for(const i in memberDataStart){
-                      console.log('today ' + memberDataToday[i].kills);
-                      console.log('start ' + memberDataStart[i].kills);
                       let weeklyKills = (memberDataToday[i].kills - memberDataStart[i].kills);
-                      let appendVar = 'name: ' + i + ' kills: ' + weeklyKills;
+                      sortable.push([i, weeklyKills]);
+                    }
+                    sortable.sort(function(a, b) {
+                      return b[1] - a[1];
+                    });
+                    for(const i in sortable){
+                      let thisStat = sortable[i];
+                      let appendVar = 'name: ' + thisStat[0] + ' kills: ' + thisStat[1];
                       console.log(appendVar);
                       $('#topWeek').append("<li id=\"newLine\" class=\"section-text\"></li>")
-                      $("#one").text("one");
                       document.getElementById("newLine").id = i
                       document.getElementById(i).innerHTML =
                               appendVar;
