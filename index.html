@@ -317,21 +317,36 @@
                   cache: false,
                   success: function (data2){
                     memberDataStart = JSON.parse(data2);
-                    let sortable = [];
+                    let sortableKills = [];
+                    let sortableSquadScore = [];
                     for(const i in memberDataStart){
                       let weeklyKills = (memberDataToday[i].kills - memberDataStart[i].kills);
-                      sortable.push([i, weeklyKills]);
+                      let weeklySquadScore = (memberDataToday[i].squadScore - memberDataStart[i].squadScore);
+                      sortableKills.push([i, weeklyKills]);
+                      sortableSquadScore.push([i, weeklySquadScore]);
                     }
-                    sortable.sort(function(a, b) {
+                    sortableKills.sort(function(a, b) {
                       return b[1] - a[1];
                     });
-                    for(const i in sortable){
-                      let thisStat = sortable[i];
-                      let appendVar = 'name: ' + thisStat[0] + ' kills: ' + thisStat[1];
+                    sortableSquadScore.sort(function(a, b) {
+                      return b[1] - a[1];
+                    });
+                    for(const i in sortableKills){
+                      let thisStat = sortableKills[i];
+                      let appendVar = thisStat[0] + ' Kills: ' + thisStat[1];
                       console.log(appendVar);
-                      $('#topWeek').append("<li id=\"newLine\" class=\"section-text\"></li>")
+                      $('#topWeekKills').append("<li id=\"newLine\" class=\"section-text\"></li>")
                       document.getElementById("newLine").id = i
                       document.getElementById(i).innerHTML =
+                              appendVar;
+                    }
+                    for(const i in sortableSquadScore){
+                      let thisStat = sortableSquadScore[i];
+                      let appendVar = thisStat[0] + ' Squad Score: ' + thisStat[1];
+                      console.log(appendVar);
+                      $('#topWeekSquadScore').append("<li id=\"newLine\" class=\"section-text\"></li>")
+                      document.getElementById("newLine").id = i + '@'
+                      document.getElementById(i + '@').innerHTML =
                               appendVar;
                     }
                   },
@@ -346,7 +361,12 @@
           <p class="section-text">
             This week's kill leaderboard!
           </p>
-          <ul id="topWeek" class="has-scrollbar">
+          <ul id="topWeekKills" class="has-scrollbar">
+          </ul>
+          <p class="section-text">
+          This week's squad score leaderboard!
+          </p>
+          <ul id="topWeekSquadScore" class="has-scrollbar">
           </ul>
         </div>
       </section>
